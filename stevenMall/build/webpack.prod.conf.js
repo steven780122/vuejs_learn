@@ -56,7 +56,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       template: 'index.html',
       inject: true,
       minify: {
-        removeComments: true,
+        removeComments: true,      // 作一些優化
         collapseWhitespace: true,
         removeAttributeQuotes: true
         // more options:
@@ -68,7 +68,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     // keep module.id stable when vender modules does not change
     new webpack.HashedModuleIdsPlugin(),
     // split vendor js into its own file
-    new webpack.optimize.CommonsChunkPlugin({
+    new webpack.optimize.CommonsChunkPlugin({    // 抽取共用的模組
       name: 'vendor',
       minChunks: function (module) {
         // any required modules inside node_modules are extracted to vendor
