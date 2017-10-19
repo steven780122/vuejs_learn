@@ -10,6 +10,7 @@
 
 <script>
 export default {
+    props:["num"],
     data(){
         return{
             num: 0,
@@ -17,11 +18,13 @@ export default {
     },
     methods:{
         increment(){
-            this.num++;
+            // this.num++;
+            this.$emit("incre");
 
         },
         decrement(){
-            this.num--;
+            // this.num--;
+            this.$emit("decre");
         },
     }
 }
