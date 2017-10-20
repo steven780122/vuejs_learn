@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <router-view/>
+    <router-view class="main"></router-view>     <!-- 默認的router-view -->
+    <router-view class="left" name='title'></router-view> <!-- title -->   
+    <router-view class="right" name='img'></router-view>  <!-- image -->
   </div>
 </template>
 
@@ -19,5 +21,12 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.left, .right {
+  float: left;
+  width: 49%;
+  border: 1px solid green;
+
 }
 </style>
