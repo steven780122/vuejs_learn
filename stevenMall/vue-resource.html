@@ -15,26 +15,42 @@
         <h1>vue-resource插件講解</h1>
         <a href="javascript:;" class="btn btn-primary" v-on:click="get">Get請求</a>
         <a href="javascript:;" class="btn btn-primary" @click="post">Post請求</a>
-        <a href="javascript:;" class="btn btn-primary">JSONP請求</a>
+        <a href="javascript:;" class="btn btn-primary" @click="jsonp">JSONP請求</a>
+        <a href="javascript:;" class="btn btn-primary" @click="http">http</a>    <!-- 使用另一種方式於下方 -->
 
         <div><span>{{msg}}</span></div>    <!-- 將下方請求的log印出來! -->
     </div>
 
     <script>
         new Vue({
+            // 其實在這裏面的this.$http就是 Vue.http，用this是因為已經實例化了，但interceptors通常是用Vue.http
             el: "#app",
             data:{
                 msg:''
-
             },
+            // 了解全局攔截器的使用:
+            mounted: function(){
+                Vue.http.interceptors.push(function(request, next){
+                    console.log("request init.");    // 即發送請求前會優先進到這裡優先執行! 如此就可以在這裡做一些處理!
+                    next(function(response){    // 下一步代表已經響應了
+                        console.log("response init.")
+                        return response;
+                    });
+                });
+            },
+            // 另外Vue還封裝了一種resource插件叫http:
+            // http:{
+            //     root: "api/"     // 如此底下提到的package.json就會在該root路徑底下所抓取(也可以寫上全局路徑http://127.0.0.1:5500/stevenMall
+            //                     // 如此一來如果下方package.json如果換了路徑只要更換此root路徑!，如此get post等只要寫上檔案名字
+            // },
             methods:{
                 get: function(){
-                    this.$http.get("package.json", {     // 可以試著改為一個不存在的，例如package1.json，就會報錯!
+                    // this.$http.get("package.json", {     // 可以試著改為一個不存在的，例如package1.json，就會報錯!
+                    this.$http.get("http://www.imooc.com/course/AjaxCourseMembers?ids=796", {     // 可以試著改為一個不存在的，例如package1.json，就會報錯!
                         params:{
                             userId: "101"
                         },
                         headers:{
-
                             token: "abcd"
                         }
                     }).then(res=>{
@@ -54,10 +70,30 @@
                     }).then(function(res){
                         this.msg = res.data;   //數據在body或data裡
                     });
-
-
+                },
+                jsonp: function(){
+                    this.$http.jsonp("http://www.imooc.com/course/AjaxCourseMembers?ids=796").then(function(res){
+                        this.msg = res.data;
+                    });   // 貼上使用GET請求失敗的該get methood url
+                },
+                http: function(){     // 也可以用http 指定傳參數、指定方法的方式
+                    this.$http({
+                        url: "package.json",
+                        methods: 'GET',
+                        params: {
+                            userId: "103"
+                        },
+                        headers:{
+                            token: "123"
+                        },
+                        timeout: 50,
+                        before: function(){
+                            console.log("Before init")
+                        }
+                    }).then(function(res){
+                        this.msg = res.data;
+                    });
                 }
-
             }
         });
 
