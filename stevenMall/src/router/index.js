@@ -10,7 +10,8 @@ import Cart from '@/views/Cart'
 
 Vue.use(Router)
 
-export default new Router({
+// export default new Router({
+  export let router = new Router({   // 改成用let XXX = 而不用default 
   routes: [
     {
       path: '/',

@@ -29,6 +29,8 @@ export default {
   methods:{
     increment(){
       this.numParent++;
+
+      // import('./../util.js')  // 異步加載用，點了'+'可以看到多出一個1.js
     },
     decrement(){
       this.numParent--;

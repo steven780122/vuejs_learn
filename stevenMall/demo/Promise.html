@@ -60,7 +60,7 @@
         // 厲害的是>>>>>>   Promise其實還提供了多種API>>  像是   Promise.all 可以同事放入多個promise物件:
         Promise.all([checkLogin(), getUserInfo()]).then(([res1, res2]) => {   // checkLogin()和 getUserInfo因為都是Promise物件所以才可以放進來喔!!!!
                                                                 // .then後面因為是接前面兩個的回調，所以也2個都放在[]中
-                console.log(`result1: ${res1.result}, result2:${res2.userId}`)
+                console.log(`result1: ${res1.result}, result2:${res2.userId}`)      // res1和res2分別就對應了上面2個promise物件的resolve那邊的值!!!
 
         });
     
