@@ -19,9 +19,17 @@ import {router} from './router'
 
 Vue.config.productionTip = false
 /* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  template: '<App/>',
+new Vue({     // 整個頁面的入口
+  el: '#app',    // 設置app的監聽對象   對應到index.html的id
+  router, // 用到的router
+  template: '<App/>', 
   components: { App }
 })
+
+// new Vue({     // 整個頁面的入口
+//   router, // 用到的router
+//   template: '<App/>',   // 用到的template
+//   components: { App }
+// }).$mount("#app");   // 不用el可以用$mount
+
+
