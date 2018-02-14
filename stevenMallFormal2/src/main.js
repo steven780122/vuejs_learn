@@ -2,8 +2,8 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-// import router from './router'   // 因為router也改為export let XXX = new router  改寫法如下
-import {router} from './router'
+import router from './router'   // 因為router也改為export let XXX = new router  改寫法如下
+// import {router} from './router'
 
 
 // import {sum, minus} from './util'
