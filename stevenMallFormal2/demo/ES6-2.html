@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6-2演示</title>
+</head>
+<body>
+    <h2>ES6-2演示</h2>
+
+
+    <script>
+        function sum(x, y, z){
+            let total = 0;
+            if(x)total+= x;
+            if(y)total+= y;
+            if(z)total+= z;
+
+            console.log(`total:${total}`);
+        }
+
+
+        sum(5, "", 9);
+
+        function sum2(...m){   // ...就是Rest參數
+            let total = 0;
+            for(let i of m){     //  ES6對m的遍歷
+                total+= i;
+            }
+
+            console.log(`total:${total}`);
+        }
+
+        sum2(4, 8, 9, 10);
+    
+        let sum3 = (...m) => {  //by ES6箭頭函數
+            let total = 0;
+            for(let i of m){     //  ES6對m的遍歷
+                total+= i;
+            }
+
+            console.log(`total:${total}`);
+        }
+
+        sum3(4, 8, 9, 10);
+
+
+        // 函數擴展:
+
+        let [x, y] = [4, 8];
+
+        console.log(...[4, 8]);  // 和array
+
+        let arr1 = [1, 3];
+        let arr2 = [4, 8];
+        console.log(arr1.concat(arr2));  //本來的方法!
+
+        // 用array擴展
+        console.log([...arr1, ...arr2]);
+
+
+        let [a, ...b] = [4, 8, 10, 30]
+        console.log("a:", a);
+        console.log("b:", b);  // b多了...就變動態了!
+
+
+
+        // 
+        let [d, e, f] = "ES6"
+        console.log("d:", d);
+        console.log("e:", e);
+        console.log("f:", f);
+
+        let xy = [...'ES6']
+        console.log(xy);
+
+    
+    
+    
+    </script>
+    
+    
+</body>
+</html>

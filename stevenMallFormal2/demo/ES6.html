@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6演示</title>
+    <style>
+        .log{
+          background-color: black;
+          color: white;
+          padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>ES6 Demo 演示</h2>
+    <div id="log" class="log"></div>
+    <script>
+
+        var str = `
+        console.log("a = " + a);
+        var a = 1;
+        console.log("b = " + b);
+        let b = 2; 
+        
+        function user(){
+            var a = 3;
+        }
+
+        console.log("a = " + a);
+        `
+        printLog(str);       
+
+        // 塊級作用域
+        // {
+        //     let a = 1;
+        //     var b = 2;
+        // }
+        
+        // console.log("b:" + b);
+        // console.log("a:" + a);   // error
+
+        // console.log("a = " + a);
+        // var a = 1;
+        // console.log("b = " + b);
+
+        // let b = 2;
+
+
+        // // const  
+        // const b = {a:1};
+
+        // b.a = 2;
+        // b.c = 10;
+
+        // console.log(b)
+        // // b = {c:1}//error
+
+
+        // 模板語言輸出
+        // let userName = "Jack";
+        // printLog(`I'm ${userName}`)
+
+
+        // // ES5
+        // function add(flag){
+        //     if(flag){
+        //         return "true";
+        //     }else{
+        //         return "error";
+        //     }
+        // }
+        
+        // console.log(add());
+
+        // // ES6 默認參數
+        // function sum(num1,num2=3){
+        // return num1+num2;
+        // }
+
+        // console.log(sum(7));
+
+        // 箭頭函式:
+        var arr = [3,6,9];
+
+        var newArr = arr.map(function (item) {
+        return item+2;
+        })
+
+        console.log(newArr);
+        var newArr1 = arr.map((item)=>item+2);   // 如果不是只有item+2這麼一行> 需要用大括號!  箭頭函式可以想成就是ES5傳統的function後面的值
+                                                // 另外箭頭函式有this的差異>> 在筆記會解說!!!
+
+        console.log(newArr1);
+
+
+
+        function printLog(str){
+            document.getElementById("log").innerText += str;
+        }
+    </script>
+
+    
+</body>
+</html>

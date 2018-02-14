@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Promise</title>
+</head>
+<body>
+    <script>
+        let checkLogin = function(){
+            return new Promise(function(resolve, reject){   // 這邊回釣友2個回調，resolve是調用成功需要進行的回調
+                                                    // reject 則是接口報錯需進行的回調!
+                                                    // 一定要return  下面才可以用.then
+
+                let flag = document.cookie.indexOf("userId") > -1?true:false; // >-1說明有登入
+
+                if(flag = true){    // 用默認職示範就會看到下面的.then就會走success
+                    resolve({
+                        status: 0,
+                        result:true
+                    });
+                }else{
+                    reject("error!");   // 實際上reject適用在報錯!不是用在else，這裡只是式反resolve和reject使用方式
+                }
+            
+            // continue...
+            })
+        };
+
+        // 假如我們想演示:  當login成功後，想用.then的方式獲取用戶信息>>
+        // 所以也加個getUserInfo的promise物件吧!!!
+        let getUserInfo = () => {
+            return new Promise((resolve, reject) => {
+                let userInfo = {
+                    userId: 101
+                };
+                resolve(userInfo)     // 因為這裡不是真的去串接後台，我們先是者把userInfo寫死在上面XD
+            });
+
+        }
+
+
+        checkLogin().then((res) => { //示範宣告了promise後怎麼使用.then(注意 使用的promise一定要return)  
+                                        // checkLogin回傳一個promise方法，再透過.then的方式來獲取回調!
+                                         // function(res){}   可改為箭頭函數
+            if(res.status == 0){
+                console.log("login success!");
+                // login 成功就去getUserInfo
+                return getUserInfo();    // 但因為getUserInfo也是Promise物件，所以下方.catch後面那邊還可以再進行.then!
+            }
+        }).catch((error) => {
+            console.log(`errors: ${error}`);
+        }).then((res2) => {
+            console.log(`userId: ${res2.userId}`);
+        })
+
+
+
+        // 厲害的是>>>>>>   Promise其實還提供了多種API>>  像是   Promise.all 可以同事放入多個promise物件:
+        Promise.all([checkLogin(), getUserInfo()]).then(([res1, res2]) => {   // checkLogin()和 getUserInfo因為都是Promise物件所以才可以放進來喔!!!!
+                                                                // .then後面因為是接前面兩個的回調，所以也2個都放在[]中
+                console.log(`result1: ${res1.result}, result2:${res2.userId}`)      // res1和res2分別就對應了上面2個promise物件的resolve那邊的值!!!
+
+        });
+    
+    </script>
+    
+</body>
+</html>
