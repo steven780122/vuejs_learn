@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <!-- <img src="./assets/logo.png"> -->
     <router-view class="main"></router-view>     <!-- 默認的router-view -->
     <router-view class="left" name='title'></router-view> <!-- title -->   
     <router-view class="right" name='img'></router-view>  <!-- image -->
