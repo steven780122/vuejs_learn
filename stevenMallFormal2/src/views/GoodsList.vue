@@ -4,17 +4,13 @@
         <!-- 必須使用nav-header -->   
         <nav-header></nav-header>
 
+        <nav-bread>
+            <span slot="bread">Goods</span>
+            <span slot="Test">測試用</span>
+        </nav-bread>
+ 
+        
 
-        <body>
-       
-        <div class="nav-breadcrumb-wrap">
-        <div class="container">
-            <nav class="nav-breadcrumb">
-            <a href="/">Home</a>
-            <span>Goods</span>
-            </nav>
-        </div>
-        </div>
         <div class="accessory-result-page accessory-page">
         <div class="container">
             <div class="filter-nav">
@@ -102,36 +98,8 @@
             </div>
         </div>
         </div>
-        <footer class="footer">
-        <div class="footer__wrap">
-            <div class="footer__secondary">
-            <div class="footer__inner">
-                <div class="footer__region">
-                <span>Region</span>
-                <select class="footer__region__select">
-                    <option value="en-US">USA</option>
-                    <option value="zh-CN">China</option>
-                    <option value="in">India</option>
-                </select>
-                </div>
-                <div class="footer__secondary__nav">
-                <span>Copyright © 2017 IMooc All Rights Reserved.</span>
-                <a href="http://us.lemall.com/us/aboutUs.html">
-                    About Us
-                </a>
-                <a href="http://us.lemall.com/us/termsofUse.html">
-                    Terms &amp; Conditions
-                </a>
-                <a href="http://us.lemall.com/us/privacyPolicy.html">
-                    Privacy Policy
-                </a>
-                </div>
-            </div>
-            </div>
-        </div>
-        </footer>
-        </body>
 
+        <nav-footer></nav-footer>
     </div>
 </template>
 
@@ -142,8 +110,10 @@
     import './../assets/css/product.css'
     import './../assets/css/login.css'
 
-    // 不要import Header 會和HTML5重複   // 
+    // 不要import Header 會和HTML5重複   // @就是指到src目錄(在webpack.base.conf.js有)
     import NavHeader from '@/components/Header.vue'
+    import NavFooter from '@/components/Footer.vue'
+    import NavBread from '@/components/Bread.vue'
 
     export default{
         data(){
@@ -152,7 +122,9 @@
             }
         },
         components:{
-            NavHeader  // 沒有用key valu 會自動生成key和value名稱相同
+            NavHeader,  // 沒有用key valu 會自動生成key和value名稱相同
+            NavFooter,
+            NavBread
         }
 
     }
