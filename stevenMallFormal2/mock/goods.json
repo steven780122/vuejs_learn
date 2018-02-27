@@ -1,0 +1,24 @@
+{
+    "status": "0",
+    "msg":"",
+    "result":[
+        {
+            "productId": "100001",
+            "productName": "音響",
+            "productPrice": 199,
+            "productImg": "1.jpg"
+        },
+        {
+            "productId": "100001",
+            "productName": "自拍桿",
+            "productPrice": 2499,
+            "productImg": "2.jpg"
+        },
+        {
+            "productId": "100001",
+            "productName": "紅耳機",
+            "productPrice": 299,
+            "productImg": "3.jpg"
+        }
+    ]
+}
