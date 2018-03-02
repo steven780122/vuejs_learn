@@ -22,6 +22,15 @@ const autoOpenBrowser = !!config.dev.autoOpenBrowser
 const proxyTable = config.dev.proxyTable
 
 const app = express()
+
+//為了在這裡用express預先測試mock數據  所以開個route
+var router = express.Router();
+var goodsData = require('./../mock/goods.json');
+router.get("/goods", function(req, res, next){
+  res.json(goodsData);
+});
+app.use(router);   // 使用這個route
+
 const compiler = webpack(webpackConfig)
 
 const devMiddleware = require('webpack-dev-middleware')(compiler, {

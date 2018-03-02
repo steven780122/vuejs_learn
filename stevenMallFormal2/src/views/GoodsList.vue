@@ -114,9 +114,10 @@
     import NavHeader from '@/components/Header.vue'
     import NavFooter from '@/components/Footer.vue'
     import NavBread from '@/components/Bread.vue'
+    import axios from 'axios'
 
     export default{
-        data(){
+        data(){          //提醒  data是一個function  所以每次加載組件都是一個獨立的，因為明確
             return{
                 msg: 'hello vue'
             }
@@ -125,6 +126,18 @@
             NavHeader,  // 沒有用key valu 會自動生成key和value名稱相同
             NavFooter,
             NavBread
+        },
+        mounted: function(){
+            this.getGoodsList();
+
+        },
+        methods:{
+            getGoodsList(){
+                console.log("XDDD");
+                axios.get("/goods").then(function(res){
+                    console.log(res.data);
+                });
+            }
         }
 
     }
