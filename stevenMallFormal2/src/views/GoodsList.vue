@@ -44,18 +44,25 @@
             <div class="accessory-list-wrap">
                 <div class="accessory-list col-4">
                 <ul>
-                    <li>
-                    <div class="pic">
-                        <a href="#"><img src="static/1.jpg" alt=""></a>
-                    </div>
-                    <div class="main">
-                        <div class="name">XX</div>
-                        <div class="price">999</div>
-                        <div class="btn-area">
-                        <a href="javascript:;" class="btn btn--m">加入购物车</a>
+                    <li v-for="(item, index) in goodsList" >
+                        <!-- continue.... -->
+                        <div class="pic">
+                            <a href="#"><img src="static/1.jpg" alt=""></a>
+                            <p>{{index}}</p>
                         </div>
-                    </div>
+                        <div class="main">
+                            <div class="name">XX</div>
+                            <div class="price">999</div>
+                            <div class="btn-area">
+                            <a href="javascript:;" class="btn btn--m">加入购物车</a>
+                            </div>
+                        </div>
                     </li>
+
+                    
+
+
+
                     <!-- <li>
                     <div class="pic">
                         <a href="#"><img src="static/2.jpg" alt=""></a>
@@ -119,7 +126,7 @@
     export default{
         data(){          //提醒  data是一個function  所以每次加載組件都是一個獨立的，因為明確
             return{
-                msg: 'hello vue'
+                goodsList: []
             }
         },
         components:{
@@ -134,8 +141,15 @@
         methods:{
             getGoodsList(){
                 console.log("XDDD");
-                axios.get("/goods").then(function(res){
-                    console.log(res.data);
+                // axios.get("/goods").then(function(res){
+                //     console.log(res.data);
+                // });
+
+                // 改用arrow function
+                axios.get("/goods").then((result) => {
+                    console.log(result.data);
+                    var res = result.data;
+                    this.goodsList = res.result;   //此的result是在mock所設的key
                 });
             }
         }
