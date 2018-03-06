@@ -9,14 +9,14 @@
             "productImg": "1.jpg"
         },
         {
-            "productId": "100001",
+            "productId": "100002",
             "productName": "自拍桿",
             "productPrice": 2499,
             "productImg": "2.jpg"
         },
         {
-            "productId": "100001",
-            "productName": "紅耳機",
+            "productId": "100003",
+            "productName": "耳機",
             "productPrice": 299,
             "productImg": "3.jpg"
         }

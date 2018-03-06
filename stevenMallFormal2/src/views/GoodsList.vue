@@ -47,12 +47,13 @@
                     <li v-for="(item, index) in goodsList" >
                         <!-- continue.... -->
                         <div class="pic">
-                            <a href="#"><img src="static/1.jpg" alt=""></a>
-                            <p>{{index}}</p>
+                            <a href="#"><img v-bind:src="'static/' + item.productImg" alt=""></a> 
+                              <!-- 記得一定要用v-bind src否則可能來不及渲染顯示不出，所以一定要用v-bind -->
+                            <!-- <p>{{index}}</p> -->
                         </div>
                         <div class="main">
-                            <div class="name">XX</div>
-                            <div class="price">999</div>
+                            <div class="name">{{item.productName}}</div>       <!-- 其實大括號也可以用v-text -->
+                            <div class="price">{{item.productPrice}}</div>
                             <div class="btn-area">
                             <a href="javascript:;" class="btn btn--m">加入购物车</a>
                             </div>
