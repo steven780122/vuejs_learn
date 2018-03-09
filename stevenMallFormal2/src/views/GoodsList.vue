@@ -24,10 +24,11 @@
             <div class="filter stopPop" id="filter">
                 <dl class="filter-price">
                 <dt>Price:</dt>
-                <dd><a href="javascript:void(0)">All</a></dd>
+                <dd><a href="javascript:void(0)" @click="priceChecked='all'" v-bind:class="{'cur':priceChecked=='all'}">All</a></dd>
                 
-                <dd v-for="price in priceFilter">
-                    <a href="javascript:void(0)">{{price.startPrice}} - {{price.endPrice}}</a>                   
+                <dd v-for="(price, index) in priceFilter">
+                    <a href="javascript:void(0)" @click="priceChecked=index"  v-bind:class="{'cur':priceChecked==index}">{{price.startPrice}} - {{price.endPrice}}</a>           
+                    <!-- <a href="javascript:void(0)" v-bind:class="{'cur':true}">{{price.startPrice}} - {{price.endPrice}}</a>                    -->
                 </dd> 
 
                 <!-- <dd>
@@ -150,7 +151,9 @@
                         startPrice: 1000,
                         endPrice: 2000
                     }
-                ]
+                ],
+                priceChecked: 'all'
+
             }
         },
         components:{
