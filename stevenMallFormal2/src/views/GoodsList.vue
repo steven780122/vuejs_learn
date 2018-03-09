@@ -25,9 +25,14 @@
                 <dl class="filter-price">
                 <dt>Price:</dt>
                 <dd><a href="javascript:void(0)">All</a></dd>
-                <dd>
+                
+                <dd v-for="price in priceFilter">
+                    <a href="javascript:void(0)">{{price.startPrice}} - {{price.endPrice}}</a>                   
+                </dd> 
+
+                <!-- <dd>
                     <a href="javascript:void(0)">0 - 100</a>
-                </dd>
+                </dd> -->
                 <!-- <dd>
                     <a href="javascript:void(0)">100 - 500</a>
                 </dd>
@@ -127,7 +132,25 @@
     export default{
         data(){          //提醒  data是一個function  所以每次加載組件都是一個獨立的，因為明確
             return{
-                goodsList: []
+                goodsList: [],
+                priceFilter: [
+                    {
+                        startPrice: 0,
+                        endPrice: 100
+                    },
+                    {
+                        startPrice: 100,
+                        endPrice: 500
+                    },
+                    {
+                        startPrice: 500,
+                        endPrice: 1000
+                    },
+                    {
+                        startPrice: 1000,
+                        endPrice: 2000
+                    }
+                ]
             }
         },
         components:{
