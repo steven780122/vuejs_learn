@@ -24,10 +24,12 @@
             <div class="filter stopPop" id="filter" v-bind:class="{'filterby-show':filterBy}">
                 <dl class="filter-price">
                 <dt>Price:</dt>
-                <dd><a href="javascript:void(0)" @click="priceChecked='all'" v-bind:class="{'cur':priceChecked=='all'}">All</a></dd>
+                <dd><a href="javascript:void(0)" @click="setPriceFilter('all')" v-bind:class="{'cur':priceChecked=='all'}">All</a></dd>
+                <!-- <dd><a href="javascript:void(0)" @click="priceChecked='all'" v-bind:class="{'cur':priceChecked=='all'}">All</a></dd> -->
                 
                 <dd v-for="(price, index) in priceFilter">
-                    <a href="javascript:void(0)" @click="priceChecked=index"  v-bind:class="{'cur':priceChecked==index}">{{price.startPrice}} - {{price.endPrice}}</a>           
+                    <a href="javascript:void(0)" @click="setPriceFilter(index)"  v-bind:class="{'cur':priceChecked==index}">{{price.startPrice}} - {{price.endPrice}}</a>
+                    <!-- <a href="javascript:void(0)" @click="priceChecked=index"  v-bind:class="{'cur':priceChecked==index}">{{price.startPrice}} - {{price.endPrice}}</a>            -->
                     <!-- <a href="javascript:void(0)" v-bind:class="{'cur':true}">{{price.startPrice}} - {{price.endPrice}}</a>                    -->
                 </dd> 
 
@@ -185,6 +187,10 @@
             showFilterPop(){
                 this.filterBy = true,
                 this.overLayFlag = true
+            },
+            setPriceFilter(index){
+                this.priceChecked = index,
+                this.clossPop()
             },
             clossPop(){
                 this.filterBy = false,
