@@ -55,7 +55,12 @@
                     <li v-for="(item, index) in goodsList" >
                         <!-- continue.... -->
                         <div class="pic">
-                            <a href="#"><img v-bind:src="'static/' + item.productImg" alt=""></a> 
+                            <!-- <a href="#"><img v-bind:src="'static/' + item.productImg" alt=""></a>  -->
+                            <!-- 改用lazy-load 所以不再v-bind:src用: -->
+                            <a href="#"><img v-lazy="'static/' + item.productImg" alt=""></a> 
+
+
+
                               <!-- 記得一定要用v-bind src否則可能來不及渲染顯示不出，所以一定要用v-bind -->
                             <!-- <p>{{index}}</p> -->
                         </div>

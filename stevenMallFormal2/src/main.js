@@ -16,8 +16,18 @@ import router from './router'   // 因為router也改為export let XXX = new rou
 // console.log(`sum:${util.sum(1, 6)}`);
 // console.log(`minus:${util.minus(6, 1)}`);
 
+// 使用lazyload
+import VueLazyLoad from 'vue-lazyload'
+
 
 Vue.config.productionTip = false
+
+Vue.use(VueLazyLoad, {
+  loading: 'static/loading-svg/loading-balls.svg'
+
+});
+
+
 /* eslint-disable no-new */
 new Vue({     // 整個頁面的入口
   el: '#app',    // 設置app的監聽對象   對應到index.html的id
